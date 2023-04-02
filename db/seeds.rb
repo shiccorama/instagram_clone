@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+#   
+#   	10.times do |i|
+9.times do |p|
+	User.create!(
+		email: "myEmail#{p}@pop.com",
+		name: "bibo_dodo_#{p}",
+		provider: "facebook profile number_#{p}",
+		password: "jojoAction#{p}",
+		uid: "uid#{p}",
+		image:"https://placekitten.com/300/200"
+		)
+end
+
+

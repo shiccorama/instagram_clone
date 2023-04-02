@@ -10,12 +10,47 @@
     media: "all",
     "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <%= render "/shared/header" if current_user %>
     <%= render "/shared/alerts" %>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
     <%= render "/shared/footer" %>
+
+    <%# flash message instead of typical alerts by using toastr.js : %>
+    <% if flash.any? %>
+      <script type="text/javascript">
+        <% flash.each do |k, v| %>
+          <% type = k.to_s.gsub("alert", "error").gsub("notice", "success") %>
+          toastr.<%= type %>("<%= v %>")
+        <% end %>
+      </script>
+      <%# end of flash message %>
+      <%# facebook SDK for login by facebook app %>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '{your-app-id}',
+            cookie     : true,
+            xfbml      : true,
+            version    : '{api-version}'
+          });
+          FB.AppEvents.logPageView();
+        };
+        (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      </script>
+      <%# end of facebook login %>
+
+    <% end %>
   </body>
 </html>

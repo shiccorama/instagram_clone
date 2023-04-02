@@ -50,6 +50,9 @@ gem "sass-rails"
 gem "turbolinks"
 gem "erb-formatter"
 gem "font-awesome-sass", "~> 6.3.0"
+gem "toastr-rails"
+gem "omniauth"
+gem 'omniauth-facebook', '~> 9.0'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
