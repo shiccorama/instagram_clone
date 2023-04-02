@@ -1,0 +1,54 @@
+    <form class="form-inline">
+      <div class="form-group mx-sm-3 mb-2">
+        <input class="form-control" type="search" placeholder="Search">
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </div>
+    </form>
+
+
+$spacers: (
+  0: ($spacer * 0),
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: ($spacer * 1),
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 5),
+  7: ($spacer * 7),
+  8: ($spacer * 8),
+  9: ($spacer * 9),
+)
+
+
+    <%= render "/shared/alerts" %>
+        <%# <div class="col-2">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div> %>
+
+
+////////////
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{your-app-id}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{api-version}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
